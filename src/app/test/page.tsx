@@ -1,7 +1,7 @@
 'use client';
 import {useEffect, useState} from "react";
 import { ConnectKitButton } from "connectkit";
-import { useAccount, useReadContract, useWriteContract } from "wagmi";
+import {useAccount, useReadContract, useWaitForTransactionReceipt, useWriteContract} from "wagmi";
 import { parseEther, formatEther } from "viem";
 import { sepolia } from "wagmi/chains";
 import { LucideLoader2, LucideWallet } from "lucide-react";
@@ -18,6 +18,9 @@ export default function Home() {
     data: txHash,
     error: txError
   } = useWriteContract();
+
+  const { isLoading: isConfirming, isSuccess: isConfirmed } =
+    useWaitForTransactionReceipt({ hash: txHash });
 
   // 读取用户余额
   const {
@@ -48,15 +51,12 @@ export default function Home() {
 
   // 存款成功后刷新余额
   useEffect(() => {
-    if (txHash) {
-      console.log("存款交易哈希:", txHash);
-      refetchBalance(); // 刷新用户余额
-      refetchTotalBalance(); // 刷新总余额
+    if (isConfirmed) {
+      console.log("交易已确认，刷新余额");
+      refetchBalance();
+      refetchTotalBalance();
     }
-    if (txError) {
-      console.error("交易错误:", txError.message);
-    }
-  }, [txHash, txError, refetchBalance, refetchTotalBalance]);
+  }, [isConfirmed, refetchBalance, refetchTotalBalance]);
 
   // 处理存款
   const handleDeposit = () => {
