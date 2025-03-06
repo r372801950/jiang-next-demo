@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
-module.exports = {
-  webpack: (config: NextConfig) => {
-    config.resolve.fallback = { fs: false, net: false, tls: false };
-    return config;
-  },
-};
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  // 其他配置...
+}
+
+module.exports = nextConfig
