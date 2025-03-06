@@ -1,6 +1,0 @@
-name = "jiang-next-demo"
-main = ".next/server/app/page.js"  # 或者适合您应用的其他入口点
-compatibility_date = "2025-03-06"
-
-[site]
-bucket = ".next/static"
