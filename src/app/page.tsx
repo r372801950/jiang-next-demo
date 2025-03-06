@@ -1,11 +1,10 @@
 'use client';
 import { useEffect, useState } from "react";
-import { ConnectKitButton } from "connectkit";
 import {useAccount, useBalance, useReadContract, useWaitForTransactionReceipt, useWriteContract} from "wagmi";
 import { parseEther, formatEther } from "viem";
 import { sepolia } from "wagmi/chains";
 import {
-  Loader2, Wallet, ArrowDownToLine, ArrowUpFromLine, DatabaseIcon,
+  Loader2, ArrowDownToLine, ArrowUpFromLine, DatabaseIcon,
   RefreshCw, AlertCircle
 } from "lucide-react";
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from "@abis/testContract";

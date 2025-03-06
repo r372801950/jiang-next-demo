@@ -9,6 +9,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
@@ -47,5 +50,6 @@
     "tailwindcss": "^4",
     "typescript": "^5",
     "wrangler": "^3.113.0"
-  }
+  },
+  "packageManager": "pnpm@9.15.6"
 }
